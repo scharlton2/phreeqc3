@@ -229,7 +229,7 @@ COMMAND $<TARGET_FILE:phreeqc> ${PROJECT_SOURCE_DIR}/examples/ex15b ex15b.out ${
 add_test(NAME examples.ex16
 COMMAND $<TARGET_FILE:phreeqc> ${PROJECT_SOURCE_DIR}/examples/ex16 ex16.out ${PROJECT_SOURCE_DIR}/database/phreeqc.dat ex16.log
 )
-	
+
 # ex17
 add_test(NAME examples.ex17
 COMMAND $<TARGET_FILE:phreeqc> ${PROJECT_SOURCE_DIR}/examples/ex17 ex17.out ${PROJECT_SOURCE_DIR}/database/pitzer.dat ex17.log

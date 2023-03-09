@@ -32,7 +32,7 @@ EX13=ex13a.out ex13a.log ex13a.sel ex13b.out ex13b.log ex13b.sel ex13c.out \
      ex13c.log ex13c.sel ex13ac.out ex13ac.log
 EX14=ex14.out ex14.log ex14.sel
 EX15=ex15.out ex15.log ex15.sel ex15a.out ex15a.log ex15b.out ex15b.log \
-     ex15b.sel  
+     ex15b.sel
 EX16=ex16.out ex16.log
 EX17=ex17.out ex17.log ex17b.out ex17b.log
 EX18=ex18.out ex18.log
