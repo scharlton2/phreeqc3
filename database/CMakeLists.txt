@@ -3,13 +3,14 @@ include(GNUInstallDirs)
 
 set(phreeqc_DATABASE
   Amm.dat
-  core10.dat
   ColdChem.dat
+  core10.dat
   frezchem.dat
   iso.dat
   llnl.dat
   minteq.dat
   minteq.v4.dat
+  PHREEQC_ThermoddemV1.10_15Dec2020.dat
   phreeqc.dat
   pitzer.dat
   sit.dat
@@ -22,7 +23,7 @@ foreach(db ${phreeqc_DATABASE})
   configure_file(${db} ${db} COPYONLY)
 endforeach()
 
-if (WIN32)
+if(WIN32)
   install (FILES ${phreeqc_DATABASE} DESTINATION database)
 else()
   install (FILES ${phreeqc_DATABASE} DESTINATION ${CMAKE_INSTALL_DOCDIR}/database)
