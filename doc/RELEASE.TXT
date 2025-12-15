@@ -1,5 +1,11 @@
 Version @PHREEQC_VER@: @PHREEQC_DATE@
 	-----------------
+	October 13, 2025
+	-----------------
+	PHREEQC:  Updated phreeqc.dat, Amm.dat, and phreeqc_rates.dat.
+	--Additional updates to viscosity and specific conductance.
+		
+	-----------------
 	October 28, 2025
 	-----------------
 	PHREEQC: A new option was added to the keyword data block LLNL_AQUEOUS_MODEL_PARAMETERS.
