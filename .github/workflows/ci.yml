@@ -534,7 +534,6 @@ jobs:
       if: ${{ runner.os == 'macOS' }}
       run: |
         brew install ninja
-        ls -alR /usr/local/Cellar/
 
     - name: Set up Visual Studio shell (Windows)
       if: runner.os == 'Windows'
