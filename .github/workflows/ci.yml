@@ -530,11 +530,6 @@ jobs:
         sudo apt-get -y update
         sudo apt-get install -y ninja-build
 
-    - name: Install ninja(macOS)
-      if: ${{ runner.os == 'macOS' }}
-      run: |
-        brew install ninja
-
     - name: Set up Visual Studio shell (Windows)
       if: runner.os == 'Windows'
       uses: egor-tensin/vs-shell@v2
