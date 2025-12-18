@@ -1,6 +1,7 @@
+WARNING: Database file from DATABASE keyword is used; command line argument ignored.
    Input file: llnl_phreeqc_dha_dhb
   Output file: llnl_phreeqc_dha_dhb.out
-Database file: ..\database\PHREEQC_ThermoddemV1.10_15Dec2020.dat
+Database file: ../database/PHREEQC_ThermoddemV1.10_15Dec2020.dat
 
 ------------------
 Reading data base.
@@ -16,7 +17,7 @@ Reading data base.
 Reading input data for simulation 1.
 ------------------------------------
 
-	DATABASE ..\database\PHREEQC_ThermoddemV1.10_15Dec2020.dat
+	DATABASE ../database/PHREEQC_ThermoddemV1.10_15Dec2020.dat
 	SELECTED_OUTPUT 101
 	    file                 llnl_phreeqc_dha_dhb_101.sel
 	USER_PUNCH 101
