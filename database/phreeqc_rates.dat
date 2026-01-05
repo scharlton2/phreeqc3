@@ -1,6 +1,20 @@
-# phreeqc_rates.dat for calculating temperature and pressure dependence of reactions, and the specific conductance and viscosity of the solution. Augmented with kinetic rates for minerals from compilations. Based on:
-#   diffusion coefficients and molal volumina of aqueous species, solubility and volume of minerals, and critical temperatures and pressures of gases in Peng-Robinson's EOS.
-# Details are given at the end of this file.
+# PHREEQC_RATES.DAT for calculating kinetic rates for minerals from compilations by:
+
+# Hermanská, M., Voigt, M.J., Marieni, C., Declercq, J. and Oelkers, E.H., 2022. A comprehensive and internally consistent mineral dissolution rate database: Part I: Primary silicate minerals and glasses. Chem. Geol., 597, p.120807
+# Hermanská, M., Voigt, M.J., Marieni, C., Declercq, J. and Oelkers, E.H., 2023. A comprehensive and consistent mineral dissolution rate database: Part II: Secondary silicate minerals. Chem. Geol., p.121632.
+# Palandri, J.L. and Kharaka, J.K., 2004. A compilation of rate parameters of water-mineral interaction kinetics for application to geochemical modeling. USGS Open-File Report 2004-1068, 71 p.
+# Sverdrup, H., Oelkers, E., Erlandsson Lampa, M., Belyazid, S., Kurz, D. and Akselsson, C., 2019. Reviews and syntheses: Weathering of silicate minerals in soils and watersheds: Parameterization of the weathering kinetics module in the PROFILE and ForSAFE models. Biogeosciences Discuss. 1-58.
+
+# For explanation and examples see https://hydrochemistry.eu/exmpls/kin_silicates.html
+
+# Rate parameter blocks were added to PHREEQC.DAT:
+# RATE_PARAMETERS_PK
+# RATE_PARAMETERS_SVD
+# RATE_PARAMETERS_HERMANSKA
+
+# Missing PHASES were copied from ThermoddemV1.10_15Dec2020.dat
+
+# at the end: Example input files with RATES for KINETICS calculations
 
 SOLUTION_MASTER_SPECIES
 #
@@ -158,10 +172,10 @@ PO4-3 = PO4-3
 	-Vm 1.24 -9.07 9.31 -2.4 5.61 0 0 0 -1.41e-2 1
 	-dw 0.612e-9
 F- = F-
-	-gamma 3.5 0
-	-Vm 0.928 1.36 6.27 -2.84 1.84 0 0 -0.318 0 1
-	-viscosity 0 2.85e-2 1.35e-2 6.11e-2 4.38e-3 1.384 0.586
-	-dw 1.46e-9 -36 4.352
+	-gamma 3.5 -9.6e-2
+	-Vm 2.213 -3.345 7.6 -2.5 1.713 15 -1 -43 5.82e-2 0.905 # Majer et al., 1997, JSC 26, 847, with NaF and KF.
+	-viscosity 0 -0.688 4.68e-2 0.695 4.21e-2 -0.043 -2
+	-dw 1.46e-9 -61 4.92 0.895 1.673
 Br- = Br-
 	-gamma 3 0.045
 	-Vm 6.72 2.85 4.21 -3.14 1.38 0 -9.56e-2 7.08 -1.56e-3 1
@@ -467,8 +481,18 @@ Na+ + HPO4-2 = NaHPO4-
 	-gamma 5.4 0
 	-Vm 5.2 8.1 13 -3 0.9 0 0 1.62e-2 1
 Na+ + F- = NaF
-	-log_k -0.24
-	-Vm 2.7483 -1.0708 6.1709 -2.7347 -.03 # supcrt
+	-log_k -2.38; -delta_h 24.5
+	-analytic -5 1.16e-2 -250
+	-gamma 0 0.2
+	-Vm -0.6 -5.5e-2 20 -2.4 -0.209
+	-dw 8e-10
+K+ + F- = KF
+	-log_k -0.59; -delta_h 14.4
+	-analytic -1.539 5.839e-3 -235
+	-gamma 0 -0.1
+	-Vm 1.985 -9.2 20 -2.4 4.1e-2
+	-viscosity 0.896 -0.769 -1e-3 2 7.01e-2 -0.84 -2
+	-dw 8e-10
 K+ + HCO3- = KHCO3
 	-log_k -0.35; -delta_h 12 kJ
 	-gamma 0 0.1
@@ -3134,10 +3158,11 @@ Wollastonite    -6.97   700             56      0.4     0       0               
 # For details, consult ref. 1 and subroutine calc_vm(tc, pa) in prep.cpp.
 # =============================================================================================
 # The viscosity is calculated with a (modified) Jones-Dole equation:
-#    viscos / viscos_0 = 1 + A * Sum(0.5 z_i m_i) + fan * Sum(B_i m_i + D_i m_i n_i)
+#    viscos / viscos_0 = 1 + A * Sum(0.5 z_i m_i)^0.5 + fan * Sum(B_i m_i + D_i m_i n_i)
 # Parameters are for calculating the B and D terms:
 #    -viscosity 9.35e-2 -8.31e-2 2.487e-2 4.49e-4 2.01e-2 1.570 0
 #    #	        b0      b1	    b2	   d1	  d2	d3  tan
+#    A = calculated according to Falkenhagen
 #    z_i is absolute charge number, m_i is molality of i
 #    B_i = b0 + b1 exp(-b2 * tc)
 #    fan = (2 - tan V_i / V_Cl-), corrects for the volume of anions and neutral species
