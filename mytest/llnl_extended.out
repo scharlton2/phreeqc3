@@ -1,3 +1,4 @@
+WARNING: Database file from DATABASE keyword is used; command line argument ignored.
    Input file: llnl_extended
   Output file: llnl_extended.out
 Database file: ../database/PHREEQC_ThermoddemV1.10_15Dec2020.dat
@@ -67,7 +68,7 @@ Reading input data for simulation 2.
 	-axis_titles "Temperature, C" "mol NaCl / kgw" "viscosity / mPa-s"
 	-axis_scale x_axis 0 300
 	10 data 6.097, 6.099, 6.106, 6.117, 6.131, 6.146, 6.168, 6.216, 6.275, 6.341, 6.416, 6.460, 6.498, 6.587, 6.680, 6.778, 6.935, 7.198, 7.573, 7.973, 8.435, 8.989, 9.649
-	20 if step_no > 1 then 60 
+	20 if step_no > 1 then 60 # plot_xy tc, tot("Na")...
 	30 restore 10 : for i = 1 to 23 : read c : put(c, i) : next i
 	60 plot_xy tc, tot("Na"),  symbol_size = 0, color = Red
 	70 plot_xy tc, get(step_no), line_width = 0, color = Red
